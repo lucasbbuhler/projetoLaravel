@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pagamento;
+use App\Models\Reserva;
 
 class PagamentoController extends Controller
 {
@@ -22,7 +23,9 @@ class PagamentoController extends Controller
      */
     public function create()
     {
-       return view('pagamentos.create');
+        $reservas = Reserva::all(); // Assuming Reserva is the model for reservations
+
+        return view('pagamentos.create', compact('reservas'));
     }
 
     /**
@@ -30,15 +33,21 @@ class PagamentoController extends Controller
      */
     public function store(Request $request)
     {
-        $pagamento = new Pagamento([
+        $request->validate([
             'id_reserva' => 'required|exists:reservas,id',
-            'metodo_de_pagamento' => $request->input('metodo_de_pagamento'),
-            'data_de_pagamento' => $request->input('data_de_pagamento')
+            'metodo_de_pagamento' => 'required',
+            'data_de_pagamento' => 'required|date',
         ]);
-
+    
+        $pagamento = new Pagamento();
+    
+        $pagamento->id_reserva = $request->input('id_reserva');
+        $pagamento->metodo_de_pagamento = $request->input('metodo_de_pagamento');
+        $pagamento->data_de_pagamento = $request->input('data_de_pagamento');
+    
         $pagamento->save();
-
-        return redirect()->route('pagamentos.create')->with('success', 'Pagamento criado com sucesso!');
+    
+        return redirect()->route('pagamentos.index')->with('success', 'Pagamento criado com sucesso!');
     }
 
     /**
@@ -48,7 +57,7 @@ class PagamentoController extends Controller
     {
         $pagamento = Pagamento::findOrFail($id);
         
-        return view('pagamento.show', compact('pagamento'));
+        return view('pagamentos.show', compact('pagamento'));
     }
 
     /**
@@ -58,7 +67,7 @@ class PagamentoController extends Controller
     {
         $pagamento = Pagamento::findOrFail($id);
         
-        return view('pagamento.edit', compact('pagamento'));
+        return view('pagamentos.edit', compact('pagamento'));
     }
 
     /**

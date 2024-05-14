@@ -24,12 +24,17 @@
                     <tr>
                         <td>{{ $reserva->id }}</td>
                         <td>{{ $reserva->responsavel }}</td>
-                        <td>{{ $reserva->id_quadra->tipo_quadra }}</td>
-                        <td>{{ (new DateTime($reserva->data_da_reserva))->format('d/m/Y') }}</td>
+                        <td>{{ $reserva->id_quadra }}</td>
+                        <td>{{ (new DateTime($reserva->data_da_reserva))->format('d/m/Y, h:m') }}</td>
                         <td>{{ $reserva->valor_da_reserva }}</td>
                         <td>
                             <a href="{{ route('reservas.show', $reserva->id) }}" class="btn btn-info">Ver</a>
                             <a href="{{ route('reservas.edit', $reserva->id) }}" class="btn btn-warning">Editar</a>
+                            <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

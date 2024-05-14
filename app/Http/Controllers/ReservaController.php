@@ -24,9 +24,9 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        $quadras = Quadra::all(); 
-
-        return view('reservas.create', compact('quadras'));
+        $quadras = Quadra::all();
+        $reservas = Reserva::all();
+        return view('reservas.create', compact('quadras', 'reservas'));
     }
 
     /**
@@ -37,17 +37,20 @@ class ReservaController extends Controller
         $request->validate([
             'id_quadra' => 'required|exists:quadras,id',
             'responsavel' => 'required',
-            'valor_da_reserva' => 'required',
             'data_da_reserva' => 'required',
         ]);    
         
-        $quadra = Quadra::find($request->quadra_id);
-        $valor_da_reserva = $quadra->valor_quadra;
+        $quadra = Quadra::find($request->id_quadra);
+    
 
-        Reserva::create($request->all());
+    
+        Reserva::create([
 
+        ]);
+    
         return redirect()->route('reservas.index')->with('success', 'Reserva criada com sucesso!');
     }
+
 
     /**
      * Display the specified resource.

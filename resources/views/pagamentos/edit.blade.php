@@ -12,11 +12,16 @@
 
             <div class="form-group">
                 <label for="data_de_pagamento">Data de Pagamento</label>
-                <input type="text" class="form-control" name="nome" value="{{ $pagamento->data_de_pagamento }}" required>
+                <input type="date" class="form-control" name="data_de_pagamento" value="{{ $pagamento->data_de_pagamento }}" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Atualizar</button>
-        </form>
-        <a href="{{ route('pagamentos.index') }}" class="btn btn-secondary mt-4">Voltar</a>
+            <div class="form-group">
+                <label for="data_de_pagamento">Metodo de Pagamento</label>
+                <input type="text" class="form-control" name="metodo_de_pagamento" value="{{ $pagamento->metodo_de_pagamento }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="{{ route('pagamentos.index') }}" class="btn btn-secondary mt-4">Voltar</a>
+        </form>    
     </div>
 </x-app-layout>

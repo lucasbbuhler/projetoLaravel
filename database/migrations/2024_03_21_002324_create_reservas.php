@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("id_quadra");
             $table->string("responsavel");
-            $table->timestamp('data_da_reserva')->nullable();
+            $table->datetime('data_da_reserva')->nullable();
             $table->integer("valor_da_reserva");
             $table->timestamps();
 

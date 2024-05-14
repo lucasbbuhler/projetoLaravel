@@ -13,8 +13,18 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Página Inicial') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('quadras.index')" :active="request()->routeIs('quadras.index')">
+                        {{ __('Quadras') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('reservas.index')" :active="request()->routeIs('reservas.index')">
+                        {{ __('Reservas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('pagamentos.index')" :active="request()->routeIs('pagamentos.index')">
+                        {{ __('Pagamentos') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -81,7 +91,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

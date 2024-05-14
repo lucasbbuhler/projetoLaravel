@@ -10,7 +10,7 @@ class Reserva extends Model
     use HasFactory;
     
     protected $table = 'reservas';
-    protected $fillable = ['id_quadra', 'responsavel', 'data_da_reserva', 'valor_da_reserva'];
+    protected $fillable = ['id_quadra', 'responsavel', 'data_da_reserva'];
     
 
     public function quadra() {

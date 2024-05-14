@@ -4,8 +4,11 @@
         {{ __('Adicionar Pagamentos') }}
     </h2>
 </x-slot>
-<div class="container">
-    <form action="{{ route('pagamentos.store') }}" method="POST">
+<header>
+        <link rel="stylesheet" href="{{ asset('css/reservas/reservas.css') }}">
+    </header>
+<div class="container-reserva">
+    <form action="{{ route('pagamentos.store') }}" method="POST" class="form-reserva">
         @csrf
         <div class="form-group">
                 <label for="id_reserva">Reserva</label>

@@ -34,6 +34,7 @@
                             <td>{{ $pagamento->metodo_de_pagamento }}</td>
                             <td>{{ $pagamento->data_de_pagamento }}</td>
                             <td>
+                                <a href="{{ route('pagamentos.show', $pagamento->id) }}" class="btn btn-info">Ver</a>
                                 <a href="{{ route('pagamentos.edit', $pagamento) }}" class="btn btn-warning">Editar</a>
                                 <form action="{{ route('pagamentos.destroy', $pagamento) }}" method="POST" style="display:inline;">
                                     @csrf
