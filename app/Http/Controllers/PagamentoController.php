@@ -32,23 +32,23 @@ class PagamentoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'id_reserva' => 'required|exists:reservas,id',
-            'metodo_de_pagamento' => 'required',
-            'data_de_pagamento' => 'required|date',
-        ]);
+{
+    $request->validate([
+        'id_reserva' => 'required|exists:reservas,id',
+        'metodo_de_pagamento' => 'required',
+        'data_pagamento' => 'required|date',
+    ]);    
     
-        $pagamento = new Pagamento();
+    $pagamento = new Pagamento();
     
-        $pagamento->id_reserva = $request->input('id_reserva');
-        $pagamento->metodo_de_pagamento = $request->input('metodo_de_pagamento');
-        $pagamento->data_de_pagamento = $request->input('data_de_pagamento');
+    $pagamento->id_reserva = $request->input('id_reserva');
+    $pagamento->metodo_de_pagamento = $request->input('metodo_de_pagamento');
+    $pagamento->data_de_pagamento = $request->input('data_pagamento');
     
-        $pagamento->save();
+    $pagamento->save();
     
-        return redirect()->route('pagamentos.index')->with('success', 'Pagamento criado com sucesso!');
-    }
+    return redirect()->route('pagamentos.index')->with('success', 'Pagamento criado com sucesso!');
+}
 
     /**
      * Display the specified resource.

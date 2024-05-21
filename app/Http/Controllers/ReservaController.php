@@ -34,24 +34,23 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_quadra' => 'required|exists:quadras,id',
-            'responsavel' => 'required',
-            'data_da_reserva' => 'required',
-        ]);    
+
+        $quadra = Quadra::find($request->quadra_id);
         
-        $quadra = Quadra::find($request->id_quadra);
-    
-
-    
-        Reserva::create([
-
+        $reserva = new Reserva([
+            'id_quadra' => $request->quadra_id,
+            'responsavel' => $request->responsavel,
+            'data_da_reserva' => $request->data_reserva,
         ]);
     
+        $reserva->valor_da_reserva = $quadra->valor_quadra;
+    
+        $reserva->save();
+        
         return redirect()->route('reservas.index')->with('success', 'Reserva criada com sucesso!');
+       
     }
-
-
+    
     /**
      * Display the specified resource.
      */
