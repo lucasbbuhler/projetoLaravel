@@ -1,6 +1,9 @@
 <x-app-layout>
     <head>
         <link rel="stylesheet" href="{{ asset('css/quadras/index.css') }}">
+        <script> var pagamentos = {!! json_encode($pagamentos->keyBy('id')->toArray()) !!}; </script>
+        <script src ="{{asset('js/acoes.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>        
     </head>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
@@ -34,12 +37,12 @@
                             <td>{{ $pagamento->metodo_de_pagamento }}</td>
                             <td>{{ $pagamento->data_de_pagamento }}</td>
                             <td>
-                                <a href="{{ route('pagamentos.show', $pagamento->id) }}" class="btn btn-info">Ver</a>
+                                <a onclick="informacaoPagamentos({{ $pagamento->id }})" href="#" class="btn btn-info">Detalhes</a>
                                 <a href="{{ route('pagamentos.edit', $pagamento) }}" class="btn btn-warning">Editar</a>
-                                <form action="{{ route('pagamentos.destroy', $pagamento) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Deletar</button>
+                                <form id="form-{{$pagamento->id}}" action="{{ route('pagamentos.destroy', $pagamento->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-danger" onclick="deletar({{ $pagamento->id }})">Excluir</button>
                                 </form>
                             </td>
                         </tr>

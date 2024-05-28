@@ -94,6 +94,6 @@ class PagamentoController extends Controller
 
         $pagamento->delete();
 
-        return redirect()->route('pagamentos.index')->with('success', 'Pagamento excluido com sucesso!');
+        return redirect()->route('pagamentos.index')->with('success');
     }
 }

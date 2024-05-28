@@ -59,6 +59,11 @@
     font-weight: bold;
 }
 
+#acao{
+    width: 250px;
+    margin: auto;
+}
+
 .btn {
     display: inline-block;
     padding: 6px 12px;

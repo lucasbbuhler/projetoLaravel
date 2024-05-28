@@ -1,5 +1,8 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('css/reservas/reservas.css') }}">
+    <script> var reservas = {!! json_encode($reservas->keyBy('id')->toArray()) !!}; </script>
+    <script src ="{{asset('js/acoes.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
             Reservas
@@ -27,8 +30,8 @@
                         <td>{{ $reserva->id_quadra }}</td>
                         <td>{{ (new DateTime($reserva->data_da_reserva))->format('d/m/Y, h:m') }}</td>
                         <td>{{ $reserva->valor_da_reserva }}</td>
-                        <td>
-                            <a href="{{ route('reservas.show', $reserva->id) }}" class="btn btn-info">Ver</a>
+                        <td id="acao">
+                            <a onclick="informacaoReservas({{ $reserva->id }})" href="#" class="btn btn-info">Detalhes</a>
                             <a href="{{ route('reservas.edit', $reserva->id) }}" class="btn btn-warning">Editar</a>
                             <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" style="display: inline;">
                                 @csrf
