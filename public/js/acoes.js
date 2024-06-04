@@ -34,6 +34,21 @@ function informacaoQuadras(id) {
   });
 }
 
+function informacaoUsers(id) {
+  var user = users[id];
+
+  var html = "<strong>ID:</strong> " + user.id + "<br>" +
+             "<strong>Nome:</strong> " + user.name + "<br>" +
+             "<strong>Email:</strong> " + user.email + "<br>";
+
+  Swal.fire({
+      title: "Detalhes do User",
+      html: html,
+      icon: "info"
+  });
+}
+
+
 function informacaoPagamentos(id) {
   var pagamento = pagamentos[id];
 

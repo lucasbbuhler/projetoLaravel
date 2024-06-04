@@ -28,6 +28,7 @@
             <input type="date" class="form-control" name="data_pagamento" required>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ route('pagamentos.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 </x-app-layout>

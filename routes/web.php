@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuadraController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\ReservaController;
@@ -20,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('users', UserController::class);
 Route::resource('pagamentos', PagamentoController::class);
 Route::resource('quadras', QuadraController::class);
 Route::resource('reservas', ReservaController::class);

@@ -39,7 +39,7 @@ class QuadraController extends Controller
 
         $quadra->save();
 
-        return redirect()->route('quadras.index')->with('success', 'Quadra criada com sucesso!');;
+        return redirect()->route('quadras.index')->with('success', 'Quadra criada com sucesso!');
     }
 
     /**

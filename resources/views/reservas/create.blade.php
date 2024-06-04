@@ -28,7 +28,7 @@
             <input type="datetime-local" class="form-control" name="data_reserva" required>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="{{ route('reservas.index') }}" class="btn btn-secondary">Voltar</a>
+        <a href="{{ route('reservas.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
     </div>
 </x-app-layout>

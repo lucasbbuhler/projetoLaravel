@@ -9,12 +9,6 @@
         </h2>
     </x-slot>
     <div class="container">
-        <form action="{{ route('quadras.index') }}" method="GET" class="search-form">
-            <div class="search-container">
-                <input type="text" name="search" placeholder="Pesquisar quadras..." value="{{ request()->query('search') }}" class="search-input">
-                <button type="submit" class="search-button">Pesquisar</button>
-            </div>
-        </form>
         <a href="{{ route('quadras.create') }}" class="btn btn-primary">Nova Quadra</a>
         <table class="table">
             <thead>

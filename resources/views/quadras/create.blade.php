@@ -15,9 +15,8 @@
         </div>
     @endif
     <body>
-        <div class="container">
-            <form action="{{ route('quadras.store') }}" method="POST">
-                <!-- Token CSRF para proteção contra ataques CSRF -->
+        <div class="container-quadra">
+            <form action="{{ route('quadras.store') }}" method="POST" class="form-quadra">
                 @csrf
                 <div class="form-group">
                     <label for="tipo_quadra">Tipo da Quadra:</label>
@@ -33,4 +32,3 @@
         </div>
     </body>
 </x-app-layout>
-
