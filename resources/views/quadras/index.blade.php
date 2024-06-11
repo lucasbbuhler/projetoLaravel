@@ -8,6 +8,11 @@
             {{ __('Lista Quadras') }}
         </h2>
     </x-slot>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="container">
         <a href="{{ route('quadras.create') }}" class="btn btn-primary">Nova Quadra</a>
         <table class="table">

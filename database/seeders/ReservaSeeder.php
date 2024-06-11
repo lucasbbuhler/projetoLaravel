@@ -9,6 +9,6 @@ class ReservaSeeder extends Seeder
 {
     public function run(): void
     {
-        \App\Models\Reserva::factory(10)->create();
+        \App\Models\Reserva::factory(0)->create();
     }
 }

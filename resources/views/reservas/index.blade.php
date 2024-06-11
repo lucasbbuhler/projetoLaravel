@@ -8,7 +8,11 @@
             Reservas
         </h2>
     </x-slot>
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="container-reserva">
         <a href="{{ route('reservas.create') }}" class="btn btn-primary">Adicionar Reserva</a>
         <table class="table">

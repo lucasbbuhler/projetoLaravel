@@ -12,10 +12,7 @@ class QuadraController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search');
-        $quadras = Quadra::where('tipo_quadra', 'like', '%'.$search.'%')
-                         ->paginate(10);
-
+        $quadras = Quadra::paginate(10);
         return view('quadras.index', compact('quadras'));;
     }
 
@@ -32,6 +29,11 @@ class QuadraController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'valor_quadra' => 'required|numeric|min:100',
+            'tipo_quadra' => 'required|string|max:50',
+        ]);
+
         $quadra = new Quadra([
             'valor_quadra' => $request->input('valor_quadra'),
             'tipo_quadra' => $request->input('tipo_quadra')
@@ -67,6 +69,12 @@ class QuadraController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'valor_quadra' => 'required|numeric|min:100',
+            'tipo_quadra' => 'required|string|max:50',
+        ]);
+        
         $quadra = Quadra::findOrFail($id);
         
         $quadra->tipo_quadra = $request->input('valor_quadra');

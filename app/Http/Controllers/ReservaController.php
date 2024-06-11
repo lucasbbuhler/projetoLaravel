@@ -34,6 +34,11 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'quadra_id' => 'required|exists:quadras,id',
+            'responsavel' => 'required|string|max:255',
+            'data_reserva' => 'required|date|after:today',
+        ]);
 
         $quadra = Quadra::find($request->quadra_id);
         
@@ -77,8 +82,17 @@ class ReservaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $request->validate([
+            'quadra_id' => 'required|exists:quadras,id',
+            'responsavel' => 'required|string|max:255',
+            'data_reserva' => 'required|date|after:today',
+        ]);
+
         $reserva = Reserva::findOrFail($id);
+
         $reserva->update($request->all());
+        
         return redirect()->route('reservas.index')->with('success', 'Reserva atualizada com sucesso!');
     }
 
